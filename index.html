@@ -3,23 +3,35 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KvK C13212 - Live Stats</title>
+    <title>KvK Info - 2629</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body, html { width: 100%; height: 100%; overflow: hidden; background: #111; font-family: sans-serif; }
-        header { background: #1a1a1a; color: #ff9900; padding: 12px 20px; text-align: center; border-bottom: 2px solid #333; }
-        iframe { width: 100%; height: calc(100% - 45px); border: none; }
+        /* Füllt den gesamten Bildschirm und zentriert den Inhalt */
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #111; /* Dunkler Hintergrund */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden; /* Verhindert unschöne Scrollbalken */
+        }
+
+        /* Das Bild passt sich flexibel der Bildschirmgröße an */
+        img {
+            max-width: 95%;
+            max-height: 95vh;
+            object-fit: contain;
+            border-radius: 8px; /* Leicht abgerundete Ecken */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Eleganter Schatten */
+        }
     </style>
 </head>
 <body>
 
-    <header>
-        <h3>KVK C13212 Statistik-Zentrale</h3>
-    </header>
-
-    <!-- Hier ist das funktionierende ProKingdoms Dashboard eingebettet -->
-    <iframe src="https://prokingdoms.com"></iframe>
+    <!-- Hier wird Ihr hochgeladenes Bild geladen -->
+    <img src="2629.jpeg" alt="KvK Info 2629">
 
 </body>
 </html>
-<img src="2629.jpg" alt="KvK Hintergrund">
