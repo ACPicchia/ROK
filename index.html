@@ -3,35 +3,58 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KvK Info - 2629</title>
+    <title>KvK C13212</title>
     <style>
-        /* Füllt den gesamten Bildschirm und zentriert den Inhalt */
-        html, body {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #111; /* Dunkler Hintergrund */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden; /* Verhindert unschöne Scrollbalken */
+        /* Der Hintergrund wird dunkel gehalten, damit das Bild gut wirkt */
+        body { 
+            background-color: #111; 
+            margin: 0; 
+            padding: 0; 
+            display: flex; 
+            flex-direction: column;
+            justify-content: center; 
+            align-items: center; 
+            min-height: 100vh; 
         }
 
-        /* Das Bild passt sich flexibel der Bildschirmgröße an */
-        img {
-            max-width: 95%;
-            max-height: 95vh;
-            object-fit: contain;
-            border-radius: 8px; /* Leicht abgerundete Ecken */
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Eleganter Schatten */
+        .content-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 90%;
+        }
+
+        /* Das Bild wird zentriert und passt sich der Bildschirmgröße an */
+        img { 
+            max-width: 100%; 
+            max-height: 75vh; 
+            height: auto; 
+            display: block; 
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            margin-bottom: 20px; /* Abstand zum Musik-Player */
+        }
+
+        /* Styling für den Musik-Player */
+        audio {
+            width: 300px;
+            outline: none;
         }
     </style>
 </head>
 <body>
 
-    <!-- Hier wird Ihr hochgeladenes Bild geladen -->
-    <img src="2629.jpeg" alt="KvK Info 2629">
+    <div class="content-box">
+        <!-- Ihr zentriertes Bild -->
+        <img src="2629.jpeg" alt="KvK Übersicht">
+
+        <!-- Der Musik-Player -->
+        <!-- Ersetzen Sie 'hymne.mp3' durch den exakten Namen Ihrer Musikdatei -->
+        <audio controls>
+            <source src="hymne.mp3" type="audio/mpeg">
+            Ihr Browser unterstützt das Audio-Element nicht.
+        </audio>
+    </div>
 
 </body>
 </html>
