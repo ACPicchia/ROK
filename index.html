@@ -3,104 +3,22 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KvK C13212 - Statistik Zentrale</title>
+    <title>KvK C13212 - Live Stats</title>
     <style>
-        /* Basis-Styling und Hintergrundbild */
-        body { 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-            background: #0f0f14 url('https://farlicdn.com') no-repeat center center fixed; 
-            background-size: cover;
-            color: #fff; 
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
-
-        /* Dunkler, halbtransparenter Kasten über dem Hintergrund */
-        .container { 
-            max-width: 650px; 
-            width: 90%;
-            margin: 20px;
-            background: rgba(20, 20, 25, 0.92); 
-            backdrop-filter: blur(10px); /* Macht den Hintergrund leicht verschwommen (Edel-Effekt) */
-            padding: 40px; 
-            border-radius: 16px; 
-            border: 1px solid rgba(255, 153, 0, 0.3); 
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.7);
-        }
-
-        /* Styling für das Logo oben */
-        .logo {
-            width: 120px;
-            height: auto;
-            margin-bottom: 15px;
-            border-radius: 8px;
-        }
-
-        h1 { 
-            color: #ff9900; 
-            margin-bottom: 10px; 
-            font-size: 2rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-        }
-
-        .subtitle {
-            color: #aaa;
-            font-size: 0.9rem;
-            margin-bottom: 25px;
-        }
-
-        p { 
-            color: #e0e0e0; 
-            margin-bottom: 35px; 
-            line-height: 1.6; 
-            font-size: 1.05rem;
-        }
-
-        /* Der goldene RoK-Button */
-        .btn { 
-            display: inline-block; 
-            background: linear-gradient(135deg, #ffaa00 0%, #e68a00 100%); 
-            color: #000; 
-            font-weight: bold; 
-            font-size: 1.1rem;
-            padding: 16px 40px; 
-            text-decoration: none; 
-            border-radius: 30px; 
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            box-shadow: 0 4px 15px rgba(255, 153, 0, 0.4);
-            transition: all 0.3s ease; 
-        }
-
-        /* Effekt beim Drüberfahren mit der Maus */
-        .btn:hover { 
-            background: linear-gradient(135deg, #ffbb33 0%, #ff9900 100%); 
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(255, 153, 0, 0.6);
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body, html { width: 100%; height: 100%; overflow: hidden; background: #111; font-family: sans-serif; }
+        header { background: #1a1a1a; color: #ff9900; padding: 12px 20px; text-align: center; border-bottom: 2px solid #333; }
+        iframe { width: 100%; height: calc(100% - 45px); border: none; }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <!-- PLATZHALTER FÜR EIN LOGO: Ersetzen Sie die URL durch Ihr eigenes Allianz-Logo -->
-        <img src="https://farlicdn.com" alt="RoK Logo" class="logo">
+    <header>
+        <h3>KVK C13212 Statistik-Zentrale</h3>
+    </header>
 
-        <h1>KVK C13212</h1>
-        <div class="subtitle">Offizielles Statistik-Dashboard & Live-Daten</div>
-        
-        <p>Willkommen in der strategischen Zentrale. Hier findet ihr alle aktuellen Live-Statistiken, detaillierte Kill Points, T4/T5-Verluste und die Ranglisten unseres aktuellen KvK-Events.</p>
-        
-        <!-- Öffnet die Statistik direkt im neuen Tab ohne Sperre -->
-        <a href="https://prokingdoms.com" target="_blank" class="btn">Live-Stats öffnen</a>
-    </div>
+    <!-- Hier ist das funktionierende ProKingdoms Dashboard eingebettet -->
+    <iframe src="https://prokingdoms.com"></iframe>
 
 </body>
 </html>
