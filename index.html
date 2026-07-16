@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KvK C13212</title>
     <style>
-        /* Der Hintergrund wird dunkel gehalten, damit das Bild gut wirkt */
         body { 
             background-color: #111; 
             margin: 0; 
@@ -24,7 +23,6 @@
             max-width: 90%;
         }
 
-        /* Das Bild wird zentriert und passt sich der Bildschirmgröße an */
         img { 
             max-width: 100%; 
             max-height: 75vh; 
@@ -32,13 +30,19 @@
             display: block; 
             border-radius: 8px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-            margin-bottom: 20px; /* Abstand zum Musik-Player */
+            margin-bottom: 20px; 
+            cursor: pointer; /* Zeigt dem Nutzer, dass er hier klicken kann */
         }
 
-        /* Styling für den Musik-Player */
         audio {
             width: 300px;
             outline: none;
+            opacity: 0.6; /* Macht den Player dezent im Hintergrund sichtbar */
+            transition: opacity 0.3s;
+        }
+
+        audio:hover {
+            opacity: 1; /* Wird voll sichtbar, wenn man mit der Maus drüberfährt */
         }
     </style>
 </head>
@@ -46,15 +50,24 @@
 
     <div class="content-box">
         <!-- Ihr zentriertes Bild -->
-        <img src="2629.jpeg" alt="KvK Übersicht">
+        <img src="2629.jpeg" alt="KvK Übersicht" onclick="startAudio()">
 
-        <!-- Der Musik-Player -->
-        <!-- Ersetzen Sie 'hymne.mp3' durch den exakten Namen Ihrer Musikdatei -->
-        <audio controls>
+        <!-- Der Musik-Player mit Autoplay, Muted und Loop -->
+        <audio id="kvkHymne" controls autoplay muted loop>
             <source src="hymne.mp3" type="audio/mpeg">
             Ihr Browser unterstützt das Audio-Element nicht.
         </audio>
     </div>
+
+    <script>
+        // Kleines Skript: Sobald der Nutzer auf das Bild klickt, 
+        // wird die Stummschaltung aufgehoben, falls der Browser Autoplay blockiert hat.
+        function startAudio() {
+            var audio = document.getElementById("kvkHymne");
+            audio.muted = false;
+            audio.play();
+        }
+    </script>
 
 </body>
 </html>
