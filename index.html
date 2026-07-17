@@ -112,24 +112,21 @@
         <h2>HOMER - IL FABBRO PIZZAIOLO</h2>
         <img src="bild2.jpeg" alt="HOMER IL FABBRO PIZZAIOLO">
         <audio id="kvkHymne2" controls>
-            <source src="hymne2.mp3" type="audio/mpeg">
+            <source src="hymne2.mp3?v=2" type="audio/mpeg">
         </audio>
     </div>
 
     <script>
         function soundAktivieren() {
-            // Hier korrigiert auf "kvkHymne1" mit großem H, passend zur ID oben
             var audio1 = document.getElementById("kvkHymne1");
             var overlay = document.getElementById("overlay");
             
-            // Startet das erste Lied
             if (audio1) {
                 audio1.play().catch(function(error) {
                     console.log("Audio 1 wurde blockiert:", error);
                 });
             }
             
-            // Schließt das Overlay
             if (overlay) {
                 overlay.style.opacity = "0";
                 setTimeout(function() {
