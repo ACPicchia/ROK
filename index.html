@@ -93,7 +93,7 @@
 </head>
 <body>
 
-    <!-- Start-Overlay für den ersten Klick (aktiviert den ersten Sound) -->
+    <!-- Start-Overlay für den ersten Klick -->
     <div id="overlay">
         <button class="start-btn" onclick="soundAktivieren()">Avvia l'inno & Entra</button>
     </div>
@@ -103,7 +103,6 @@
         <h2>I 5 INUTILI</h2>
         <img src="2629.jpeg" alt="I 5 INUTILI">
         <audio id="kvkHymne1" controls>
-            <!-- Exakt an Ihre Kleinschreibung angepasst -->
             <source src="hymne.mp3" type="audio/mpeg">
         </audio>
     </div>
@@ -113,26 +112,30 @@
         <h2>HOMER - IL FABBRO PIZZAIOLO</h2>
         <img src="bild2.jpeg" alt="HOMER IL FABBRO PIZZAIOLO">
         <audio id="kvkHymne2" controls>
-            <!-- Hier stand vorher fälschlicherweise hymne.mp3 -> Jetzt korrigiert auf hymne2.mp3 -->
             <source src="hymne2.mp3" type="audio/mpeg">
         </audio>
     </div>
 
     <script>
         function soundAktivieren() {
-            var audio1 = document.getElementById("kvkhymne1");
+            // Hier korrigiert auf "kvkHymne1" mit großem H, passend zur ID oben
+            var audio1 = document.getElementById("kvkHymne1");
             var overlay = document.getElementById("overlay");
             
-            // Startet NUR das erste Lied
-            audio1.play().catch(function(error) {
-                console.log("Audio 1 wurde blockiert:", error);
-            });
+            // Startet das erste Lied
+            if (audio1) {
+                audio1.play().catch(function(error) {
+                    console.log("Audio 1 wurde blockiert:", error);
+                });
+            }
             
-            // Schliesst das Overlay
-            overlay.style.opacity = "0";
-            setTimeout(function() {
-                overlay.style.display = "none";
-            }, 400);
+            // Schließt das Overlay
+            if (overlay) {
+                overlay.style.opacity = "0";
+                setTimeout(function() {
+                    overlay.style.display = "none";
+                }, 400);
+            }
         }
     </script>
 
