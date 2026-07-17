@@ -102,9 +102,8 @@
     <div class="content-box">
         <h2>I 5 INUTILI</h2>
         <img src="2629.jpeg" alt="I 5 INUTILI">
-        <!-- Spielet nur das erste Lied beim Klick auf den Button ab -->
         <audio id="kvkHymne1" controls>
-            <source src="Hymne.mp3" type="audio/mpeg">
+            <!-- Exakt an Ihre Kleinschreibung angepasst -->
             <source src="hymne.mp3" type="audio/mpeg">
         </audio>
     </div>
@@ -113,16 +112,15 @@
     <div class="content-box">
         <h2>HOMER - IL FABBRO PIZZAIOLO</h2>
         <img src="bild2.jpeg" alt="HOMER IL FABBRO PIZZAIOLO">
-        <!-- Das zweite Lied wartet, bis der Nutzer manuell auf "Play" drückt -->
         <audio id="kvkHymne2" controls>
-            <source src="Hymne2.mp3" type="audio/mpeg">
+            <!-- Hier stand vorher fälschlicherweise hymne.mp3 -> Jetzt korrigiert auf hymne2.mp3 -->
             <source src="hymne2.mp3" type="audio/mpeg">
         </audio>
     </div>
 
     <script>
         function soundAktivieren() {
-            var audio1 = document.getElementById("kvkHymne1");
+            var audio1 = document.getElementById("kvkhymne1");
             var overlay = document.getElementById("overlay");
             
             // Startet NUR das erste Lied
