@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KvK C13212</title>
+    <title>R.I.P. 2629</title>
     <style>
         body { 
             background-color: #111; 
@@ -22,10 +22,9 @@
             flex-direction: column;
             align-items: center;
             max-width: 90%;
-            margin-bottom: 60px; /* Abstand zwischen den beiden Sektionen */
+            margin-bottom: 60px;
         }
 
-        /* Goldene, epische Titelüberschriften */
         h2 {
             color: #ff9900;
             font-size: 2rem;
@@ -57,7 +56,6 @@
             opacity: 1; 
         }
 
-        /* Das Start-Overlay */
         #overlay {
             position: fixed;
             top: 0;
@@ -95,7 +93,7 @@
 </head>
 <body>
 
-    <!-- Start-Overlay für den ersten Klick (aktiviert den Sound) -->
+    <!-- Start-Overlay für den ersten Klick (aktiviert beide Sounds) -->
     <div id="overlay">
         <button class="start-btn" onclick="soundAktivieren()">Avvia l'inno & Entra</button>
     </div>
@@ -104,30 +102,37 @@
     <div class="content-box">
         <h2>I 5 INUTILI</h2>
         <img src="2629.jpeg" alt="I 5 INUTILI">
-        <audio id="kvkHymne1" controls loop>
-            <source src="hymne.mp3" type="audio/mpeg">
+        <!-- controls ohne loop -> spielt nur einmal ab -->
+        <audio id="kvkHymne1" controls>
+            <source src="Hymne.mp3" type="audio/mpeg">
         </audio>
     </div>
 
     <!-- SEKTION 2 -->
     <div class="content-box">
-        <h2>HOMER IL FABBRO PIZZAIOLO</h2>
-        <!-- Vergessen Sie nicht, den Namen durch Ihre zweite Bilddatei zu ersetzen -->
+        <h2>HOMER - IL FABBRO PIZZAIOLO</h2>
+        <!-- Vergessen Sie nicht, bild2.jpeg durch Ihren echten Dateinamen zu ersetzen -->
         <img src="bild2.jpeg" alt="HOMER IL FABBRO PIZZAIOLO">
-        <!-- Vergessen Sie nicht, den Namen durch Ihre zweite Musikdatei zu ersetzen -->
-        <audio id="Hymne2" controls loop>
-            <source src="hymne2.mp3" type="audio/mpeg">
+        <!-- controls ohne loop -> spielt nur einmal ab -->
+        <audio id="kvkHymne2" controls>
+            <source src="Hymne2.mp3" type="audio/mpeg">
         </audio>
     </div>
 
     <script>
         function soundAktivieren() {
             var audio1 = document.getElementById("kvkHymne1");
+            var audio2 = document.getElementById("kvkHymne2");
             var overlay = document.getElementById("overlay");
             
-            // Startet das erste Lied automatisch nach dem Eintrittsklick
+            // Startet das erste Lied
             audio1.play().catch(function(error) {
-                console.log("Autoplay blockiert:", error);
+                console.log("Audio 1 blockiert:", error);
+            });
+
+            // Startet das zweite Lied zeitgleich
+            audio2.play().catch(function(error) {
+                console.log("Audio 2 blockiert:", error);
             });
             
             overlay.style.opacity = "0";
