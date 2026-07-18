@@ -45,6 +45,27 @@
             margin-bottom: 25px; 
         }
 
+        /* Container, damit die eingebetteten Videos auf Handys & PCs perfekt passen */
+        .video-container {
+            position: relative;
+            width: 600px;
+            max-width: 100%;
+            aspect-ratio: 16 / 9;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.7);
+            border-radius: 8px;
+            overflow: hidden;
+            background-color: #000;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
         audio {
             width: 300px;
             outline: none;
@@ -54,30 +75,6 @@
 
         audio:hover {
             opacity: 1; 
-        }
-
-        /* Edle goldene Video-Buttons */
-        .video-btn {
-            background: linear-gradient(135deg, #ffaa00 0%, #e68a00 100%);
-            color: #000;
-            border: none;
-            padding: 16px 35px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            border-radius: 50px;
-            cursor: pointer;
-            text-decoration: none;
-            box-shadow: 0 4px 15px rgba(255, 153, 0, 0.3);
-            transition: transform 0.2s, box-shadow 0.2s;
-            display: inline-block;
-            text-align: center;
-        }
-
-        .video-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 6px 20px rgba(255, 153, 0, 0.5);
         }
 
         #overlay {
@@ -135,16 +132,22 @@
         </audio>
     </div>
 
-    <!-- SEKTION 3: NON CALPESTARMI (Button-Lösung) -->
+    <!-- SEKTION 3: NON CALPESTARMI (Direkt abspielbar) -->
     <div class="content-box">
         <h2>NON CALPESTARMI</h2>
-        <a href="https://youtu.be/IiJx6b3PoQ4" target="_blank" class="video-btn">Guarda il Video su YouTube</a>
+        <div class="video-container">
+            <!-- Nutzt die korrekte offizielle YouTube-Einbettungsadresse -->
+            <iframe src="https://youtube.com" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+        </div>
     </div>
 
-    <!-- SEKTION 4: NUOVA STRADA (Button-Lösung) -->
+    <!-- SEKTION 4: NUOVA STRADA (Direkt abspielbar) -->
     <div class="content-box">
         <h2>NUOVA STRADA</h2>
-        <a href="https://youtu.be/hhW0uAiDV-8" target="_blank" class="video-btn">Guarda il Video su YouTube</a>
+        <div class="video-container">
+            <!-- Nutzt die korrekte offizielle YouTube-Einbettungsadresse -->
+            <iframe src="https://youtube.com" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+        </div>
     </div>
 
     <script>
