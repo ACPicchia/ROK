@@ -45,6 +45,27 @@
             margin-bottom: 20px; 
         }
 
+        /* Responsive Container für die YouTube Videos (16:9 Format) */
+        .video-container {
+            position: relative;
+            width: 100%;
+            width: 600px;
+            max-width: 100%;
+            aspect-ratio: 16 / 9;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.7);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
         audio {
             width: 300px;
             outline: none;
@@ -98,24 +119,38 @@
         <button class="start-btn" onclick="soundAktivieren()">Avvia l'inno & Entra</button>
     </div>
 
-    <!-- SEKTION 1 -->
+    <!-- SEKTION 1: Bild & Audio 1 -->
     <div class="content-box">
         <h2>I 5 INUTILI</h2>
         <img src="2629.jpeg" alt="I 5 INUTILI">
         <audio id="kvkHymne1" controls>
-            <!-- Auf den neuen Namen Inutili.mp3 angepasst -->
             <source src="Inutili.mp3" type="audio/mpeg">
         </audio>
     </div>
 
-    <!-- SEKTION 2 -->
+    <!-- SEKTION 2: Bild & Audio 2 -->
     <div class="content-box">
         <h2>HOMER - IL FABBRO PIZZAIOLO</h2>
         <img src="bild2.jpeg" alt="HOMER IL FABBRO PIZZAIOLO">
         <audio id="kvkHymne2" controls>
-            <!-- Auf den neuen Namen Homer.mp3 angepasst -->
             <source src="Homer.mp3" type="audio/mpeg">
         </audio>
+    </div>
+
+    <!-- SEKTION 3: Video 1 (YouTube) -->
+    <div class="content-box">
+        <h2>NON CALPESTARMI</h2>
+        <div class="video-container">
+            <iframe src="https://youtube.com" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <!-- SEKTION 4: Video 2 (YouTube) -->
+    <div class="content-box">
+        <h2>NUOVA STRADA</h2>
+        <div class="video-container">
+            <iframe src="https://youtube.com" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
     </div>
 
     <script>
