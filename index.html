@@ -58,13 +58,35 @@
             display: none;
             flex-direction: column;
             align-items: center;
-            max-width: 90%;
+            max-width: 1200px;
+            width: 95%;
             animation: fadeIn 0.4s ease forwards;
         }
 
         /* Macht den aktiven Inhalt sichtbar */
         .content-box.active {
             display: flex;
+        }
+
+        /* Das Nebeneinander-Layout (Flex-Grid) */
+        .grid-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 40px;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        /* Einzelne Spalten-Box für den Inhalt */
+        .grid-item {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 500px;
+            width: 100%;
         }
 
         @keyframes fadeIn {
@@ -82,9 +104,19 @@
             text-align: center;
         }
 
+        .sub-heading {
+            color: #ffaa00;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            text-align: center;
+            min-height: 40px; /* Hält die Titel auf gleicher Höhe */
+        }
+
         img { 
             max-width: 100%; 
-            max-height: 65vh; 
+            max-height: 55vh; 
             height: auto; 
             display: block; 
             border-radius: 8px;
@@ -96,6 +128,7 @@
             width: 300px;
             outline: none;
             opacity: 0.9; 
+            margin-bottom: 20px;
         }
 
         .video-btn {
@@ -114,6 +147,7 @@
             transition: transform 0.2s, box-shadow 0.2s;
             display: inline-block;
             text-align: center;
+            margin-bottom: 20px;
         }
 
         .video-btn:hover {
@@ -150,6 +184,18 @@
             cursor: pointer;
             box-shadow: 0 4px 20px rgba(255, 153, 0, 0.4);
         }
+
+        /* Responsive Design: Auf Smartphones automatisch untereinander anzeigen */
+        @media (max-width: 768px) {
+            .grid-container {
+                flex-direction: column;
+                align-items: center;
+                gap: 50px;
+            }
+            .sub-heading {
+                min-height: auto;
+            }
+        }
     </style>
 </head>
 <body>
@@ -163,8 +209,7 @@
     <div class="tab-menu">
         <button class="tab-btn active" onclick="switchTab('tab1')">I 5 INUTILI</button>
         <button class="tab-btn" onclick="switchTab('tab2')">Homer Pizzaiolo</button>
-        <button class="tab-btn" onclick="switchTab('tab3')">Non Calpestarmi</button>
-        <button class="tab-btn" onclick="switchTab('tab4')">Nuova Strada</button>
+        <button class="tab-btn" onclick="switchTab('tab3')">ACPicchia</button>
     </div>
 
     <!-- SEKTION 1: I 5 INUTILI -->
@@ -176,38 +221,50 @@
         </audio>
     </div>
 
-    <!-- SEKTION 2: HOMER PIZZAIOLO -->
+    <!-- SEKTION 2: HOMER PIZZAIOLO (Nebeneinander) -->
     <div id="tab2" class="content-box">
         <h2>HOMER - IL FABBRO PIZZAIOLO 2629</h2>
-        <img src="bild2.jpeg" alt="HOMER IL FABBRO PIZZAIOLO">
-        <audio id="kvkHymne2" controls>
-            <!-- Nutzt Homer.mp3 laut Ihrer Dateiliste -->
-            <source src="Homer.mp3" type="audio/mpeg">
-        </audio>
-        <br><br>
-        <h2>LA NUOVA CUCINA DI HOMER NEL 1452</h2>
-        <img src="bild3.jpeg" alt="HOMER IL FABBRO PIZZAIOLO">
-        <audio id="kvkHymne2" controls>
-            <source src="Homer2.mp3" type="audio/mpeg">
-        </audio>
-        <br><br>
-
+        
+        <div class="grid-container">
+            <!-- Linker Spalteninhalt -->
+            <div class="grid-item">
+                <div class="sub-heading">IL FABBRO PIZZAIOLO</div>
+                <img src="bild2.jpeg" alt="HOMER IL FABBRO PIZZAIOLO">
+                <audio id="kvkHymne2" controls>
+                    <source src="Homer.mp3" type="audio/mpeg">
+                </audio>
+            </div>
+            
+            <!-- Rechter Spalteninhalt -->
+            <div class="grid-item">
+                <div class="sub-heading">LA NUOVA CUCINA DI HOMER NEL 1452</div>
+                <img src="bild3.jpeg" alt="LA NUOVA CUCINA DI HOMER">
+                <audio id="kvkHymne3" controls>
+                    <source src="Homer2.mp3" type="audio/mpeg">
+                </audio>
+            </div>
+        </div>
     </div>
 
-    <!-- SEKTION 3: NON CALPESTARMI -->
+    <!-- SEKTION 3: ACPICCHIA (Nebeneinander) -->
     <div id="tab3" class="content-box">
-        <h2>2629 NON CALPESTARMI</h2>
-        <!-- KORRIGIERT: Verweist exakt auf CALPESTARMI1.jpeg -->
-        <img src="CALPESTARMI1.jpeg" alt="CALPESTARMI">
-        <a href="https://youtu.be" target="_blank" class="video-btn">Guarda il Video su YouTube</a>
-    </div>
-
-    <!-- SEKTION 4: NUOVA STRADA -->
-    <div id="tab4" class="content-box">
-        <h2>NUOVA STRADA VERSO IL 1452</h2>
-        <!-- KORRIGIERT: Verweist exakt auf STRADA1.jpeg -->
-        <img src="STRADA1.jpeg" alt="NUOVA STRADA">
-        <a href="https://youtu.be" target="_blank" class="video-btn">Guarda il Video su YouTube</a>
+        <h2>ACPICCHIA</h2>
+        
+        <div class="grid-container">
+            <!-- Linker Spalteninhalt -->
+            <div class="grid-item">
+                <div class="sub-heading">2629 NON CALPESTARMI</div>
+                <img src="CALPESTARMI1.jpeg" alt="CALPESTARMI">
+                <a href="https://youtu.be" target="_blank" class="video-btn">Guarda il Video</a>
+            </div>
+            
+            <!-- Rechter Spalteninhalt -->
+            <div class="grid-item">
+                <div class="sub-heading">NUOVA STRADA VERSO IL 1452</div>
+                <img src="STRADA1.jpeg" alt="NUOVA STRADA">
+                <a href="https://youtu.be" target="_blank" class="video-btn">Guarda il Video</a>
+            </div>
+        </div>
     </div>
 
     <script>
