@@ -8,21 +8,68 @@
         body { 
             background-color: #111; 
             margin: 0; 
-            padding: 40px 0; 
+            padding: 20px 0; 
             display: flex; 
             flex-direction: column;
             align-items: center; 
             min-height: 100vh; 
             font-family: sans-serif;
-            position: relative;
         }
 
-        .content-box {
+        /* Das Navigationsmenü oben */
+        .tab-menu {
             display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 30px;
+            max-width: 90%;
+        }
+
+        /* Styling für die Menü-Knöpfe */
+        .tab-btn {
+            background-color: #222;
+            color: #aaa;
+            border: 1px solid #444;
+            padding: 12px 24px;
+            font-size: 1rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn:hover {
+            color: #fff;
+            background-color: #333;
+        }
+
+        /* Aktiv-Zustand für den ausgewählten Tab */
+        .tab-btn.active {
+            background: linear-gradient(135deg, #ffaa00 0%, #e68a00 100%);
+            color: #000;
+            border-color: #ffaa00;
+            box-shadow: 0 4px 15px rgba(255, 153, 0, 0.3);
+        }
+
+        /* Die Inhalts-Boxen (Standardmäßig unsichtbar) */
+        .content-box {
+            display: none;
             flex-direction: column;
             align-items: center;
             max-width: 90%;
-            margin-bottom: 60px;
+            animation: fadeIn 0.4s ease forwards;
+        }
+
+        /* Macht den aktiven Inhalt sichtbar */
+        .content-box.active {
+            display: flex;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         h2 {
@@ -37,7 +84,7 @@
 
         img { 
             max-width: 100%; 
-            max-height: 75vh; 
+            max-height: 65vh; 
             height: auto; 
             display: block; 
             border-radius: 8px;
@@ -48,15 +95,9 @@
         audio {
             width: 300px;
             outline: none;
-            opacity: 0.8; 
-            transition: opacity 0.3s;
+            opacity: 0.9; 
         }
 
-        audio:hover {
-            opacity: 1; 
-        }
-
-        /* Edle goldene Video-Buttons */
         .video-btn {
             background: linear-gradient(135deg, #ffaa00 0%, #e68a00 100%);
             color: #000;
@@ -80,13 +121,14 @@
             box-shadow: 0 6px 20px rgba(255, 153, 0, 0.5);
         }
 
+        /* Start-Overlay */
         #overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.9);
+            background: rgba(0, 0, 0, 0.95);
             backdrop-filter: blur(5px);
             display: flex;
             justify-content: center;
@@ -117,8 +159,16 @@
         <button class="start-btn" onclick="soundAktivieren()">Avvia l'inno & Entra</button>
     </div>
 
+    <!-- DAS NAVIGATIONS-MENÜ -->
+    <div class="tab-menu">
+        <button class="tab-btn active" onclick="switchTab('tab1')">I 5 INUTILI</button>
+        <button class="tab-btn" onclick="switchTab('tab2')">Homer Pizzaiolo</button>
+        <button class="tab-btn" onclick="switchTab('tab3')">Non Calpestarmi</button>
+        <button class="tab-btn" onclick="switchTab('tab4')">Nuova Strada</button>
+    </div>
+
     <!-- SEKTION 1: I 5 INUTILI -->
-    <div class="content-box">
+    <div id="tab1" class="content-box active">
         <h2>I 5 INUTILI</h2>
         <img src="2629.jpeg" alt="I 5 INUTILI">
         <audio id="kvkHymne1" controls>
@@ -126,37 +176,38 @@
         </audio>
     </div>
 
-    <!-- SEKTION 2: HOMER - IL FABBRO PIZZAIOLO 2629 & LA NUOVA CUCINA DI HOMER -->
-    <div class="content-box">
+    <!-- SEKTION 2: HOMER PIZZAIOLO -->
+    <div id="tab2" class="content-box">
         <h2>HOMER - IL FABBRO PIZZAIOLO 2629</h2>
         <img src="bild2.jpeg" alt="HOMER IL FABBRO PIZZAIOLO">
         <audio id="kvkHymne2" controls>
+            <!-- Nutzt Homer.mp3 laut Ihrer Dateiliste -->
             <source src="Homer.mp3" type="audio/mpeg">
         </audio>
         <br><br>
-        <h2>LA NUOVA CUCINA DI HOMER</h2>
-         <img src="bild3.jpeg" alt="HOMER IL FABBRO PIZZAIOLO">
+        <h2>LA NUOVA CUCINA DI HOMER NEL 1452</h2>
+        <img src="bild3.jpeg" alt="HOMER IL FABBRO PIZZAIOLO">
         <audio id="kvkHymne2" controls>
             <source src="Homer2.mp3" type="audio/mpeg">
         </audio>
         <br><br>
+
     </div>
 
-    <!-- SEKTION 3: NON CALPESTARMI mit Bild -->
-    <div class="content-box">
-        <h2>NON CALPESTARMI 2629</h2>
-        <!-- Neu eingefügtes Bild zwischen Titel und Button -->
+    <!-- SEKTION 3: NON CALPESTARMI -->
+    <div id="tab3" class="content-box">
+        <h2>2629 NON CALPESTARMI</h2>
+        <!-- KORRIGIERT: Verweist exakt auf CALPESTARMI1.jpeg -->
         <img src="CALPESTARMI1.jpeg" alt="CALPESTARMI">
-        <a href="https://youtu.be/IiJx6b3PoQ4" target="_blank" class="video-btn">Guarda il Video su YouTube</a>
+        <a href="https://youtu.be" target="_blank" class="video-btn">Guarda il Video su YouTube</a>
     </div>
 
-    <!-- SEKTION 4: NUOVA STRADA mit Bild -->
-    <div class="content-box">
+    <!-- SEKTION 4: NUOVA STRADA -->
+    <div id="tab4" class="content-box">
         <h2>NUOVA STRADA VERSO IL 1452</h2>
-        <!-- Neu eingefügtes Bild zwischen Titel und Button. 
-             Wichtig: Bitte prüfen Sie bei GitHub, ob die Dateiendung .jpeg oder .jpg lautet und passen Sie diese falls nötig an. -->
-        <img src="STRADA1.jpeg" alt="STRADA">
-        <a href="https://youtu.be/hhW0uAiDV-8" target="_blank" class="video-btn">Guarda il Video su YouTube</a>
+        <!-- KORRIGIERT: Verweist exakt auf STRADA1.jpeg -->
+        <img src="STRADA1.jpeg" alt="NUOVA STRADA">
+        <a href="https://youtu.be" target="_blank" class="video-btn">Guarda il Video su YouTube</a>
     </div>
 
     <script>
@@ -176,6 +227,26 @@
                     overlay.style.display = "none";
                 }, 400);
             }
+        }
+
+        function switchTab(tabId) {
+            var boxes = document.querySelectorAll('.content-box');
+            boxes.forEach(function(box) {
+                box.classList.remove('active');
+            });
+
+            var buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(function(btn) {
+                btn.classList.remove('active');
+            });
+
+            var audios = document.querySelectorAll('audio');
+            audios.forEach(function(audio) {
+                audio.pause();
+            });
+
+            document.getElementById(tabId).classList.add('active');
+            event.currentTarget.classList.add('active');
         }
     </script>
 
