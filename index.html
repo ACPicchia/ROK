@@ -6,277 +6,101 @@
     <title>R.I.P. 2629</title>
     <style>
         * { box-sizing: border-box; }
-        body {
-            background-color: #111;
-            color: #fff;
-            margin: 0;
-            padding: 20px 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-            font-family: Arial, Helvetica, sans-serif;
-        }
-        .tab-menu {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 30px;
-            max-width: 90%;
-        }
-        .tab-btn {
-            background-color: #222;
-            color: #aaa;
-            border: 1px solid #444;
-            padding: 12px 24px;
-            font-size: 1rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        .tab-btn:hover {
-            color: #fff;
-            background-color: #333;
-        }
-        .tab-btn.active {
-            background: linear-gradient(135deg, #ffaa00 0%, #e68a00 100%);
-            color: #000;
-            border-color: #ffaa00;
-            box-shadow: 0 4px 15px rgba(255, 153, 0, 0.3);
-        }
-        .content-box {
-            display: none;
-            flex-direction: column;
-            align-items: center;
-            max-width: 1200px;
-            width: 95%;
-            animation: fadeIn 0.4s ease forwards;
-        }
-        .content-box.active { display: flex; }
-        .grid-container {
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            align-items: flex-start;
-            gap: 40px;
-            width: 100%;
-            margin-top: 20px;
-        }
-        .grid-item {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            max-width: 500px;
-            width: 100%;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        h2 {
-            color: #ff9900;
-            font-size: 2rem;
-            margin: 0 0 20px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
-            text-align: center;
-        }
-        .sub-heading {
-            color: #ffaa00;
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            text-align: center;
-            min-height: 40px;
-        }
-        img {
-            max-width: 100%;
-            max-height: 55vh;
-            height: auto;
-            display: block;
-            border-radius: 8px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
-            margin-bottom: 25px;
-        }
-        audio {
-            width: min(300px, 100%);
-            outline: none;
-            opacity: 0.9;
-            margin-bottom: 20px;
-        }
-        .video-btn {
-            background: linear-gradient(135deg, #ffaa00 0%, #e68a00 100%);
-            color: #000;
-            border: none;
-            padding: 16px 35px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            border-radius: 50px;
-            cursor: pointer;
-            text-decoration: none;
-            box-shadow: 0 4px 15px rgba(255, 153, 0, 0.3);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-            display: inline-block;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        .video-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 6px 20px rgba(255, 153, 0, 0.5);
-        }
-        @media (max-width: 768px) {
-            .grid-container {
-                flex-direction: column;
-                align-items: center;
-                gap: 50px;
-            }
-            .sub-heading { min-height: auto; font-size: 1.2rem; }
-            h2 { font-size: 1.6rem; }
-            .tab-btn { padding: 10px 16px; font-size: 0.9rem; }
+        body { background-color:#111; color:#fff; margin:0; min-height:100vh; font-family:Arial,Helvetica,sans-serif; }
+        .page-layout { display:flex; min-height:100vh; }
+        .sidebar { width:260px; flex:0 0 260px; background:#181818; border-right:1px solid #333; padding:20px; position:sticky; top:0; height:100vh; overflow-y:auto; }
+        .main-content { flex:1; min-width:0; display:flex; flex-direction:column; align-items:center; padding:20px; }
+        .tab-menu { display:flex; flex-direction:column; gap:12px; width:100%; }
+        .tab-btn { width:100%; background:#222; color:#aaa; border:1px solid #444; padding:15px; font-size:1rem; font-weight:bold; text-transform:uppercase; border-radius:8px; cursor:pointer; transition:all .3s ease; text-align:center; }
+        .tab-btn:hover { color:#fff; background:#333; }
+        .tab-btn.active { background:linear-gradient(135deg,#ffaa00 0%,#e68a00 100%); color:#000; border-color:#ffaa00; box-shadow:0 4px 15px rgba(255,153,0,.3); }
+        .content-box { display:none; flex-direction:column; align-items:center; max-width:1200px; width:95%; animation:fadeIn .4s ease forwards; }
+        .content-box.active { display:flex; }
+        .grid-container { display:flex; flex-direction:row; justify-content:center; align-items:flex-start; gap:40px; width:100%; margin-top:20px; }
+        .grid-item { flex:1; display:flex; flex-direction:column; align-items:center; max-width:500px; width:100%; }
+        @keyframes fadeIn { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
+        h2 { color:#ff9900; font-size:2rem; margin:0 0 20px; text-transform:uppercase; letter-spacing:2px; text-shadow:0 2px 4px rgba(0,0,0,.6); text-align:center; }
+        .sub-heading { color:#ffaa00; font-size:1.5rem; margin-bottom:20px; text-transform:uppercase; letter-spacing:1.5px; text-align:center; min-height:40px; }
+        img { max-width:100%; max-height:55vh; height:auto; display:block; border-radius:8px; box-shadow:0 4px 20px rgba(0,0,0,.7); margin-bottom:25px; }
+        audio { width:min(300px,100%); outline:none; opacity:.9; margin-bottom:20px; }
+        .video-btn { background:linear-gradient(135deg,#ffaa00 0%,#e68a00 100%); color:#000; border:none; padding:16px 35px; font-size:1.1rem; font-weight:bold; text-transform:uppercase; letter-spacing:1px; border-radius:50px; cursor:pointer; text-decoration:none; box-shadow:0 4px 15px rgba(255,153,0,.3); transition:transform .2s ease,box-shadow .2s ease; display:inline-block; text-align:center; margin-bottom:20px; }
+        .video-btn:hover { transform:scale(1.05); box-shadow:0 6px 20px rgba(255,153,0,.5); }
+        @media (max-width:768px) {
+            .page-layout { flex-direction:column; }
+            .sidebar { width:100%; flex:none; height:auto; position:static; border-right:none; border-bottom:1px solid #333; }
+            .main-content { padding:20px 10px; }
+            .grid-container { flex-direction:column; align-items:center; gap:50px; }
+            .sub-heading { min-height:auto; font-size:1.2rem; }
+            h2 { font-size:1.6rem; }
+            .tab-btn { padding:10px 16px; font-size:.9rem; }
         }
     </style>
 </head>
 <body>
-    <nav class="tab-menu" aria-label="Navigazione principale">
-        <button class="tab-btn active" type="button" data-tab="tab1">I 5 INUTILI</button>
-        <button class="tab-btn" type="button" data-tab="tab2">Homer Pizzaiolo</button>
-        <button class="tab-btn" type="button" data-tab="tab3">ACPicchia</button>
-        <button class="tab-btn" type="button" data-tab="tab4">亗DarkSoul亗</button>
-        <button class="tab-btn" type="button" data-tab="tab5">CaƤO乃ASイONE</button>
-        <button class="tab-btn" type="button" data-tab="tab6">MEME & FOTO</button>
-    </nav>
-
-    <section id="tab1" class="content-box active">
-        <h2>I 5 INUTILI</h2>
-        <img src="2629.jpeg" alt="I 5 INUTILI">
-        <audio id="kvkHymne1" controls preload="metadata">
-            <source src="Inutili.mp3" type="audio/mpeg">
-            Il tuo browser non supporta l'elemento audio.
-        </audio>
-    </section>
-
-    <section id="tab2" class="content-box">
-        <h2>HOMER - IL FABBRO PIZZAIOLO 2629</h2>
-        <div class="grid-container">
-            <div class="grid-item">
-                <div class="sub-heading">IL FABBRO PIZZAIOLO 2629</div>
-                <img src="bild2.jpeg" alt="Homer, il fabbro pizzaiolo del 2629">
-                <audio id="kvkHymne2" controls preload="metadata">
-                    <source src="Homer.mp3" type="audio/mpeg">
-                    Il tuo browser non supporta l'elemento audio.
-                </audio>
+    <div class="page-layout">
+        <aside class="sidebar">
+            <nav class="tab-menu" aria-label="Navigazione principale">
+                <button class="tab-btn active" type="button" data-tab="tab1">I 5 INUTILI</button>
+                <button class="tab-btn" type="button" data-tab="tab2">Homer Pizzaiolo</button>
+                <button class="tab-btn" type="button" data-tab="tab3">ACPicchia</button>
+                <button class="tab-btn" type="button" data-tab="tab4">亗DarkSoul亗</button>
+                <button class="tab-btn" type="button" data-tab="tab5">CaƤO乃ASイONE</button>
+                <button class="tab-btn" type="button" data-tab="tab6">MEME & FOTO</button>
+            </nav>
+        </aside>
+        <main class="main-content">
+            <section id="tab1" class="content-box active">
+                <h2>I 5 INUTILI</h2>
+                <img src="2629.jpeg" alt="I 5 INUTILI">
+                <audio id="kvkHymne1" controls preload="metadata"><source src="Inutili.mp3" type="audio/mpeg">Il tuo browser non supporta l'elemento audio.</audio>
+            </section>
+            <section id="tab2" class="content-box">
+                <h2>HOMER - IL FABBRO PIZZAIOLO 2629</h2>
+                <div class="grid-container">
+                    <div class="grid-item"><div class="sub-heading">IL FABBRO PIZZAIOLO 2629</div><img src="bild2.jpeg" alt="Homer, il fabbro pizzaiolo del 2629"><audio id="kvkHymne2" controls preload="metadata"><source src="Homer.mp3" type="audio/mpeg">Il tuo browser non supporta l'elemento audio.</audio></div>
+                    <div class="grid-item"><div class="sub-heading">LA CUCINA DI HOMER NEL 1452</div><img src="bild3.jpeg" alt="La nuova cucina di Homer nel 1452"><audio id="kvkHymne3" controls preload="metadata"><source src="Homer3.mp3" type="audio/mpeg">Il tuo browser non supporta l'elemento audio.</audio></div>
+                </div>
+            </section>
+            <section id="tab3" class="content-box">
+                <h2>ACPICCHIA</h2>
+                <div class="grid-container">
+                    <div class="grid-item"><div class="sub-heading">2629 NON CALPESTARMI</div><img src="CALPESTARMI1.jpeg" alt="Copertina di Non Calpestarmi"><audio id="kvkHymne6" controls><source src="NONCALPESTARMI.mp3" type="audio/mpeg"></audio><a href="https://youtu.be/IiJx6b3PoQ4" target="_blank" rel="noopener noreferrer" class="video-btn">Guarda il video su YouTube</a></div>
+                    <div class="grid-item"><div class="sub-heading">NUOVA STRADA VERSO IL 1452</div><img src="STRADA1.jpeg" alt="Copertina di Nuova Strada"><audio id="kvkHymne7" controls><source src="NUOVASTRADA.mp3" type="audio/mpeg"></audio><a href="https://youtu.be/hhW0uAiDV-8" target="_blank" rel="noopener noreferrer" class="video-btn">Guarda il video su YouTube</a></div>
+                </div>
+            </section>
+            <div id="tab4" class="content-box">
+                <h2>亗DarkSoul亗</h2>
+                <div class="grid-container">
+                    <div class="grid-item"><div class="sub-heading">INNO AL RE DARK – Regno 2629</div><img src="INNODARK.jpeg" alt="INNO AL RE DARK"><audio id="kvkHymne4" controls><source src="INNODRAK.mp3" type="audio/mpeg"></audio></div>
+                    <div class="grid-item"><div class="sub-heading">BELLA CIAO — 2629 DARK EDITION</div><img src="BELLACIAO.jpe" alt="BELLA CIAO"><audio id="kvkHymne5" controls><source src="BELLACIA.mp3" type="audio/mpeg"></audio></div>
+                </div>
             </div>
-            <div class="grid-item">
-                <div class="sub-heading">LA CUCINA DI HOMER NEL 1452</div>
-                <img src="bild3.jpeg" alt="La nuova cucina di Homer nel 1452">
-                <audio id="kvkHymne3" controls preload="metadata">
-                    <source src="Homer3.mp3" type="audio/mpeg">
-                    Il tuo browser non supporta l'elemento audio.
-                </audio>
+            <div id="tab5" class="content-box">
+                <h2>CaƤO乃ASイONE</h2>
+                <div class="grid-container">
+                    <div class="grid-item"><div class="sub-heading">IL KAING CHE NESSUNO VUOLE</div><img src="CAPOBASTONE1.jpeg" alt="IL KAIN CHE NESSUNO VUOLE"><audio id="kvkHymne8" controls><source src="CAPOBASTONE1.mp3" type="audio/mpeg"></audio></div>
+                    <div class="grid-item"><div class="sub-heading">Il RE DELLE CATENE BARBARI</div><img src="CAPOBASTONE2.jpeg" alt="Il RE DELLE CATENE"><audio id="kvkHymne9" controls><source src="CAPOBASTONE2.mp3" type="audio/mpeg"></audio></div>
+                </div>
             </div>
-        </div>
-    </section>
-
-    <section id="tab3" class="content-box">
-        <h2>ACPICCHIA</h2>
-        <div class="grid-container">
-            <div class="grid-item">
-                <div class="sub-heading">2629 NON CALPESTARMI</div>
-                <img src="CALPESTARMI1.jpeg" alt="Copertina di Non Calpestarmi">
-                <audio id="kvkHymne6" controls>
-                    <source src="NONCALPESTARMI.mp3" type="audio/mpeg">
-                </audio>
-                <a href="https://youtu.be/IiJx6b3PoQ4" target="_blank" rel="noopener noreferrer" class="video-btn">Guarda il video su YouTube</a>
+            <div id="tab6" class="content-box">
+                <h2>MEME & FOTO</h2>
+                <div style="color:#666;font-size:1.5rem;text-transform:uppercase;letter-spacing:2px;margin-top:40px;font-weight:bold;text-align:center;">🕒 Prossimamente / Coming Soon</div>
             </div>
-            <div class="grid-item">
-                <div class="sub-heading">NUOVA STRADA VERSO IL 1452</div>
-                <img src="STRADA1.jpeg" alt="Copertina di Nuova Strada">
-                <audio id="kvkHymne7" controls>
-                    <source src="NUOVASTRADA.mp3" type="audio/mpeg">
-                </audio>
-                <a href="https://youtu.be/hhW0uAiDV-8" target="_blank" rel="noopener noreferrer" class="video-btn">Guarda il video su YouTube</a>
-            </div>
-        </div>
-    </section>
-    
-    <div id="tab4" class="content-box">
-        <h2>亗DarkSoul亗</h2>
-        <div class="grid-container">
-            <!-- Linker Spalteninhalt -->
-            <div class="grid-item">
-                <div class="sub-heading">INNO AL RE DARK – Regno 2629</div>
-                <img src="INNODARK.jpeg" alt="INNO AL RE DARK">
-                <audio id="kvkHymne4" controls>
-                    <source src="INNODRAK.mp3" type="audio/mpeg">
-                </audio>
-            </div>
-            <!-- Rechter Spalteninhalt -->
-            <div class="grid-item">
-                <div class="sub-heading">BELLA CIAO — 2629 DARK EDITION</div>
-                <img src="BELLACIAO.jpe" alt="BELLA CIAO">
-                <audio id="kvkHymne5" controls>
-                    <source src="BELLACIA.mp3" type="audio/mpeg">
-                </audio>
-                  </div>
-        </div>
+        </main>
     </div>
-    <div id="tab5" class="content-box">
-        <h2>CaƤO乃ASイONE</h2>
-        <div class="grid-container">
-            <!-- Linke Spalte -->
-            <div class="grid-item">
-                <div class="sub-heading">IL KAING CHE NESSUNO VUOLE</div>
-                <img src="CAPOBASTONE1.jpeg" alt="IL KAIN CHE NESSUNO VUOLE">
-                <audio id="kvkHymne8" controls>
-                    <source src="CAPOBASTONE1.mp3" type="audio/mpeg">
-                </audio>
-            </div>
-            <!-- Rechte Spalte -->
-            <div class="grid-item">
-                <div class="sub-heading">Il RE DELLE CATENE BARBARI</div>
-                <img src="CAPOBASTONE2.jpeg" alt="Il RE DELLE CATENE">
-                <audio id="kvkHymne9" controls>
-                    <source src="CAPOBASTONE2.mp3" type="audio/mpeg">
-                </audio>
-            </div>
-        </div>
-    </div>
-        <!-- SEKTION 6: MEME & FOTO (COMING SOON) -->
-    <div id="tab6" class="content-box">
-        <h2>MEME & FOTO</h2>
-        <div style="color: #666; font-size: 1.5rem; text-transform: uppercase; letter-spacing: 2px; margin-top: 40px; font-weight: bold; text-align: center;">
-            🕒 Prossimamente / Coming Soon
-        </div>
-    </div>
- </div>
     <script>
-        const tabButtons = document.querySelectorAll('.tab-btn');
-        const contentBoxes = document.querySelectorAll('.content-box');
-        const audioPlayers = document.querySelectorAll('audio');
-
-        function switchTab(tabId, activeButton) {
-            contentBoxes.forEach((box) => box.classList.remove('active'));
-            tabButtons.forEach((button) => button.classList.remove('active'));
-            audioPlayers.forEach((audio) => audio.pause());
-
-            const targetTab = document.getElementById(tabId);
-            if (targetTab) targetTab.classList.add('active');
+        const tabButtons=document.querySelectorAll('.tab-btn');
+        const contentBoxes=document.querySelectorAll('.content-box');
+        const audioPlayers=document.querySelectorAll('audio');
+        function switchTab(tabId,activeButton){
+            contentBoxes.forEach((box)=>box.classList.remove('active'));
+            tabButtons.forEach((button)=>button.classList.remove('active'));
+            audioPlayers.forEach((audio)=>audio.pause());
+            const targetTab=document.getElementById(tabId);
+            if(targetTab) targetTab.classList.add('active');
             activeButton.classList.add('active');
         }
-
-        tabButtons.forEach((button) => {
-            button.addEventListener('click', () => {
-                switchTab(button.dataset.tab, button);
-            });
-        });
+        tabButtons.forEach((button)=>{button.addEventListener('click',()=>{switchTab(button.dataset.tab,button);});});
     </script>
 </body>
 </html>
